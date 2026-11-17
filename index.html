@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BINORI | Uniwersalne wkłady do koszy</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:#18334b;background:#fff}
+header{height:78px;padding:0 7%;display:flex;align-items:center;
+justify-content:space-between;border-bottom:1px solid #e8f0f5}
+.logo{font-size:29px;font-weight:800;letter-spacing:4px;color:#244b69}
+nav{display:flex;gap:28px;align-items:center}
+nav a{color:#24445e;text-decoration:none;font-size:14px}
+.cart{border:0;background:#eaf5fc;padding:12px 18px;
+border-radius:25px;color:#244b69;cursor:pointer}
+.hero{background:linear-gradient(120deg,#f3f9fd,#e2f1fa);
+padding:95px 8%;display:grid;grid-template-columns:1.1fr .9fr;
+align-items:center;gap:35px;min-height:490px}
+.tag{color:#6799b8;text-transform:uppercase;letter-spacing:3px;
+font-size:12px;margin-bottom:20px}
+h1{font-size:clamp(42px,6vw,68px);line-height:1.08;
+letter-spacing:-2px;margin-bottom:22px;color:#193c59}
+.hero p{font-size:17px;line-height:1.8;color:#58748a;
+max-width:480px;margin-bottom:30px}
+.cta{display:inline-block;background:#244e70;color:white;
+padding:16px 27px;border-radius:5px;text-decoration:none;
+font-size:14px;letter-spacing:1px}
+.visual{min-height:280px;display:flex;align-items:center;
+justify-content:center}
+.pack{width:205px;height:245px;background:white;border-radius:18px;
+box-shadow:0 25px 60px #8caec044;display:flex;flex-direction:column;
+align-items:center;justify-content:center;transform:rotate(4deg);
+border:1px solid #e5eff5}
+.pack .brand{font-size:27px;font-weight:800;letter-spacing:4px}
+.pack .line{width:65px;height:3px;background:#8dbbd8;margin:18px}
+.pack small{color:#63839a;letter-spacing:2px;font-size:9px}
+.pack .symbol{font-size:55px;margin:12px}
+section{padding:75px 8%}
+.heading{text-align:center;margin-bottom:42px}
+.heading h2{font-size:34px;color:#204664;margin-bottom:12px}
+.heading p{color:#7891a4;line-height:1.6}
+.product{max-width:850px;margin:auto;border:1px solid #e6eef3;
+border-radius:12px;display:grid;grid-template-columns:1fr 1fr;
+overflow:hidden}
+.product-art{background:#f0f7fb;min-height:300px;display:flex;
+align-items:center;justify-content:center}
+.product-art div{background:white;padding:48px 30px;
+border-radius:14px;box-shadow:0 15px 40px #9db9cc44;
+font-size:23px;font-weight:bold;letter-spacing:3px}
+.product-info{padding:38px;display:flex;flex-direction:column;
+justify-content:center;align-items:flex-start}
+.product-info h3{font-size:25px;margin-bottom:15px}
+.product-info p{color:#70899b;line-height:1.7;margin-bottom:22px}
+.price{font-size:22px;font-weight:bold;margin-bottom:20px}
+.add{background:#244e70;color:white;border:0;padding:15px 23px;
+border-radius:5px;cursor:pointer}
+.features{background:#f5f9fc}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feature{background:white;padding:30px 20px;text-align:center;
+border-radius:10px}
+.feature .icon{font-size:30px;margin-bottom:15px}
+.feature h3{font-size:17px;margin-bottom:10px}
+.feature p{font-size:14px;color:#7891a4;line-height:1.6}
+.about{text-align:center;max-width:700px;margin:auto}
+.about p{color:#71899a;line-height:1.9;margin-top:18px}
+footer{background:#193c59;color:white;padding:35px 8%;
+display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:13px;color:#d0e0eb}
+#cart-panel{display:none;background:#f3f8fb;padding:25px 8%;
+border-bottom:1px solid #dce9f1}
+#cart-panel button{margin-top:12px}
+@media(max-width:700px){
+header{padding:0 5%;height:68px}
+nav{gap:10px}nav a{display:none}
+.hero{grid-template-columns:1fr;padding:65px 7%}
+.visual{min-height:220px}
+section{padding:55px 6%}
+.product{grid-template-columns:1fr}
+.product-art{min-height:230px}
+.feature-grid{grid-template-columns:1fr}
+footer{padding:30px 6%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BINORI</div>
+  <nav>
+    <a href="#sklep">SKLEP</a>
+    <a href="#onas">O MARCE</a>
+    <a href="#kontakt">KONTAKT</a>
+    <button class="cart" onclick="toggleCart()">
+      Koszyk (<span id="count">0</span>)
+    </button>
+  </nav>
+</header>
+
+<div id="cart-panel">
+  <h3>Twój koszyk</h3>
+  <p id="cart-items">Twój koszyk jest pusty.</p>
+  <button class="add" onclick="alert('To wersja demonstracyjna. Płatności i zamówienia skonfigurujemy później.')">
+    Przejdź do zamówienia
+  </button>
+</div>
+
+<main>
+  <div class="hero">
+    <div>
+      <div class="tag">Poznaj BINORI</div>
+      <h1>Codzienność<br>może być<br>prostsza.</h1>
+      <p>Uniwersalne wkłady do koszy na pieluchy.
+      Poznaj markę BINORI i odkryj nasz produkt.</p>
+      <a class="cta" href="#sklep">POZNAJ PRODUKT</a>
+    </div>
+    <div class="visual">
+      <div class="pack">
+        <div class="brand">BINORI</div>
+        <div class="line"></div>
+        <div class="symbol">◯</div>
+        <small>UNIWERSALNY WKŁAD</small>
+      </div>
+    </div>
+  </div>
+
+  <section id="sklep">
+    <div class="heading">
+      <h2>Poznaj nasz produkt</h2>
+      <p>Prostota i funkcjonalność w codziennej opiece nad dzieckiem.</p>
+    </div>
+    <div class="product">
+      <div class="product-art">
+        <div>BINORI</div>
+      </div>
+      <div class="product-info">
+        <div class="tag">KOLEKCJA BINORI</div>
+        <h3>Uniwersalny wkład do kosza</h3>
+        <p>Wkład do koszy na pieluchy marki BINORI.</p>
+        <div class="price">Cena do uzupełnienia</div>
+        <button class="add" onclick="addToCart()">
+          DODAJ DO KOSZYKA
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="heading">
+      <h2>Dlaczego BINORI?</h2>
+      <p>Marka stworzona z myślą o codziennych potrzebach rodziców.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">♡</div>
+        <h3>Dla rodziców</h3>
+        <p>Produkty do codziennej opieki nad maluchem.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">◯</div>
+        <h3>Uniwersalność</h3>
+        <p>Uniwersalne wkłady do koszy na pieluchy.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">✧</div>
+        <h3>Marka BINORI</h3>
+        <p>Twoja marka i Twój produkt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="onas">
+    <div class="about">
+      <div class="tag">NASZA MARKA</div>
+      <h2>Poznaj BINORI</h2>
+      <p>BINORI to marka uniwersalnych wkładów do koszy
+      na pieluchy. Chcemy dostarczać rodzicom praktyczne
+      rozwiązania, które wpisują się w codzienne życie.</p>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakt">
+  <div class="logo" style="color:white">BINORI</div>
+  <p>Kontakt: tutaj dodamy Twój adres e-mail</p>
+  <p>© 2026 BINORI. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+<script>
+let cartCount = 0;
+
+function addToCart() {
+  cartCount++;
+  document.getElementById("count").textContent = cartCount;
+  document.getElementById("cart-items").textContent =
+    "Uniwersalny wkład BINORI × " + cartCount;
+  document.getElementById("cart-panel").style.display = "block";
+}
+
+function toggleCart() {
+  const panel = document.getElementById("cart-panel");
+  panel.style.display =
+    panel.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
